@@ -1,25 +1,14 @@
 CXX      := g++
-CXXFLAGS := -std=c++17 -O2 -Wall -Wextra
-TARGET   := bin/solution
-SRC      := src/main.cpp
+CXXFLAGS := -std=c++17 -O2
+TARGET   := solution
 
-.PHONY: all build test clean
+.PHONY: all run clean
 
-all: build
+all:
+	$(CXX) $(CXXFLAGS) -o $(TARGET) main.cpp
 
-build:
-	@mkdir -p bin
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
-	@echo "Build successful: $(TARGET)"
-
-test: build
-	@if [ -f data/sample_input.txt ]; then \
-		echo "Running sample test..."; \
-		./$(TARGET) < data/sample_input.txt; \
-	else \
-		echo "No test data found. Place input files under data/"; \
-	fi
+run: all
+	./$(TARGET)
 
 clean:
-	rm -rf bin/
-	@echo "Cleaned."
+	rm -f $(TARGET)

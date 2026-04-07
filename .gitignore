@@ -1,28 +1,11 @@
-# ===== 编译产物 =====
-bin/
-build/
+# 编译产物
+solution
 *.o
-*.out
-*.exe
-*.a
-*.so
 
-# ===== 测试数据（本地，不提交） =====
+# 本地测试数据（不提交）
 data/
 
-# ===== IDE & 编辑器 =====
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 .DS_Store
-
-# ===== CMake =====
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile.cmake
-
-# ===== 日志 =====
-*.log

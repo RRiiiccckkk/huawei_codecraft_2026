@@ -1,87 +1,38 @@
 # huawei_codecraft_2026
 
-CODE CRAFT 普朗克计划 · 2026华为软件精英挑战赛 · 团队公共仓库
+2026 华为软件精英挑战赛 · 团队代码仓库
 
----
+## 文件
 
-## 目录结构
+| 文件 | 说明 |
+|------|------|
+| `main.cpp` | 提交代码，在这里写解题逻辑 |
+| `Makefile` | 编译与运行快捷命令 |
+| `.gitignore` | 忽略编译产物与本地测试数据 |
 
-```
-huawei_codecraft_2026/
-├── README.md          # 本文件，仓库说明与工作流
-├── .gitignore         # 忽略编译产物与 IDE 配置
-├── Makefile           # 编译 & 测试快捷命令
-└── src/
-    ├── main.cpp       # 主要提交代码入口
-    └── solution.hpp   # 算法/解题逻辑头文件
-```
-
----
-
-## 分支策略（Branch Strategy）
-
-> 不同思路使用不同分支，相互独立迭代，最终从各分支最优解中择优提交。
-
-| 分支名                | 说明                         |
-|-----------------------|------------------------------|
-| `main`                | 最终提交版本（仅存放可提交代码） |
-| `solution/greedy`     | 贪心思路                     |
-| `solution/dp`         | 动态规划思路                 |
-| `solution/simulation` | 模拟思路                     |
-| `solution/<your-idea>`| 其他自定义思路               |
-
-### 工作流
-
-1. **开发阶段**：在对应思路分支上开发和提交。
-   ```bash
-   git checkout -b solution/<your-idea>   # 新建思路分支
-   # ... 修改代码 ...
-   git add src/                           # 只 add 当前思路的代码
-   git commit -m "feat: <描述>"
-   git push origin solution/<your-idea>
-   ```
-
-2. **评估阶段**：各思路分支独立跑测试，记录得分。
-   ```bash
-   make build    # 编译
-   make test     # 本地测试（将测试数据放在 data/ 目录下）
-   ```
-
-3. **最终提交**：
-   - 从每个思路分支中选出**本分支最优解**。
-   - 在所有分支最优解中再**择优一次**，合并到 `main` 分支。
-   ```bash
-   git checkout main
-   git merge --no-ff solution/<best-idea>   # 合并最优解
-   git push origin main
-   ```
-
----
-
-## 快速开始
+## 常用命令
 
 ```bash
-# 克隆仓库
-git clone https://github.com/RRiiiccckkk/huawei_codecraft_2026.git
-cd huawei_codecraft_2026
-
-# 编译
-make build
-
-# 运行（从 stdin 读取输入）
-./bin/solution < data/sample_input.txt
-
-# 清理编译产物
-make clean
+make        # 编译 → 生成 solution
+make run    # 编译并运行（从 stdin 读取）
+make clean  # 删除编译产物
 ```
 
----
+## 分支策略
 
-## 提交规范
+每种思路开一个分支，互不干扰，最终从各分支择优合并到 `main` 提交。
 
-- `feat: <description>` — 新功能 / 新思路
-- `fix: <description>`  — Bug 修复
-- `perf: <description>` — 性能优化
-- `test: <description>` — 测试用例
-- `chore: <description>` — 其他杂项
+```bash
+# 新建思路分支
+git checkout -b solution/我的思路
+
+# 开发完提交
+git add main.cpp
+git commit -m "描述"
+git push origin solution/我的思路
+
+# 最终：把最优解合并到 main
+git checkout main
+git merge --no-ff solution/最优思路
+```
 
