@@ -1,0 +1,11 @@
+# 编译产物
+solution
+*.o
+
+# 本地测试数据（不提交）
+data/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
